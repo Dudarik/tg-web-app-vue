@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
 import { onMounted } from 'vue';
+import { useTelegram } from '../lib/useTelegram';
 
-const tg = window.Telegram.WebApp;
 console.log('window.Telegram.WebApp', window.Telegram.WebApp);
+const { tg, username, first_name, last_name, onClose } = useTelegram();
 onMounted(() => {
-  // tg.ready();/
+  tg.ready();
 });
-const onClose = () => {
-  tg.close();
-};
 </script>
 <template>
   <header>
-    <div class="user_info">{{ tg.initDataUnsafe.user?.username }}</div>
+    <div class="user_info">
+      {{ `@${username} - ${first_name} ${last_name}` }}
+    </div>
     <Button label="close" @click="onClose" />
   </header>
 </template>
