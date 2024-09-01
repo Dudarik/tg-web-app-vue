@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Header from './components/Header.vue';
+import PageHeader from './components/PageHeader.vue';
 </script>
 
 <template>
   <div class="container">
-    <Header />
+    <PageHeader />
   </div>
 </template>
 

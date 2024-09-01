@@ -5,17 +5,17 @@ import { onMounted } from 'vue';
 const tg = window.Telegram.WebApp;
 console.log('window.Telegram.WebApp', window.Telegram.WebApp);
 onMounted(() => {
-  tg.ready();
+  // tg.ready();/
 });
 const onClose = () => {
   tg.close();
 };
 </script>
 <template>
-  <Header>
+  <header>
     <div class="user_info">{{ tg.initDataUnsafe.user?.username }}</div>
     <Button label="close" @click="onClose" />
-  </Header>
+  </header>
 </template>
 
 <style scoped></style>
