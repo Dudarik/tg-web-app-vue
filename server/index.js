@@ -2,7 +2,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import 'dotenv/config';
 // replace the value below with the Telegram token you receive from @BotFather
 const token = process.env.BOT_TOKEN;
-const webAppUrl = '/';
+const webAppUrl = 'https://ya.ru';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -20,9 +20,7 @@ bot.on('message', async (msg) => {
   if (text === '/start') {
     await bot.sendMessage(chatId, `Привет ${first_name} ${last_name}!`, {
       reply_markup: {
-        inline_keyboard: [
-          [{ text: 'Искать', web_app: { url: 'https://ya.ru' } }],
-        ],
+        inline_keyboard: [[{ text: 'Искать', web_app: { url: webAppUrl } }]],
       },
     });
 
@@ -31,7 +29,7 @@ bot.on('message', async (msg) => {
   // send a message to the chat acknowledging receipt of their message
   await bot.sendMessage(chatId, 'Received your message', {
     reply_markup: {
-      keyboard: [[{ text: 'Заполнить форму' }]],
+      keyboard: [[{ text: 'Заполнить форму', web_app: { url: webAppUrl } }]],
     },
   });
 });
